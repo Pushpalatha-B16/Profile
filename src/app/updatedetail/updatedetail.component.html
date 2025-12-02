@@ -1,0 +1,44 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body class="bg-gray-200 flex items-center justify-center min-h-screen bg-linear-to-bl from-violet-500 to-blue-500">
+    <form #user="ngForm" (submit)="onSubmit(user)"   enctype="multipart/form-data" ngNativeValidate  class="bg-white/10 shadow-2xl rounded-xl p-8 w-full max-w-md space-y-5">
+      <h2 class="text-3xl font-bold text-center text-gray-800">Update details</h2> 
+      <div>
+      <label class="block text-black font-semibold mb-1">First Name</label>
+      <input type="text" name="first_name" #firstname="ngModel" pattern="^[A-Za-z]+$" [(ngModel)]="user_detail.first_name" required class="w-full p-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+      <p *ngIf="firstname.touched && !firstname.valid" class="text-red-500 text-sm mt-1 font-semibold">This field is required and accepts alphabets only</p>
+      </div>
+      <div>
+        <label class="block text-black font-semibold mb-1">Last Name</label>
+        <input type="text" name="last_name" #lastname="ngModel" pattern="^[A-Za-z]+$" [(ngModel)]="user_detail.last_name" required class="w-full p-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <p *ngIf="lastname.touched && !lastname.valid" class="text-red-700 text-sm mt-1 font-semibold">This field is required and accepts alphabets only</p>
+       </div>
+        <div>
+        <label class="block text-black font-semibold mb-1">Phone Number</label>
+        <input type="text" name="phone" #userphone="ngModel" pattern="^\d{10}$" [(ngModel)]="user_detail.phone" required minlength="10" maxlength="10" class="w-full p-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <p *ngIf="userphone.touched && !userphone.valid" class="text-red-500 text-sm mt-1 font-semibold">Allowed Exactly 10 numbers only</p>
+        </div>
+        <div>
+        <label class="block text-black font-semibold mb-1">Date of Birth</label>
+        <input type="date" name="dob" #userdate="ngModel" [(ngModel)]="user_detail.dob" required class="w-full p-1 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+         <p *ngIf="userdate.touched && !userdate.valid" class="text-red-500 text-sm mt-1 font-semibold">This Field is required</p>
+        </div>
+     
+  <input type="submit" value="save" class="w-full bg-green-600 text-white py-3 rounded-lg font-semibold  hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed">
+    <div class="flex justify-center ">
+   <a [routerLink]="['/login']" class="text-blue-600 font-medium hover:underline ">login</a> 
+</div>
+</form>
+
+
+
+
+</body>
+</html>

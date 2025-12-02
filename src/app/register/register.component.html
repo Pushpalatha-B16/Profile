@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <div class="min-h-screen flex items-center justify-center bg-linear-to-bl from-violet-500 to-blue-500 p-6">
+     <div class="w-full max-w-lg bg-white/10 p-8 rounded-2xl shadow-2xl">
+        <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">
+      User Registration
+    </h2>
+    <form #user="ngForm" (submit)="onSubmit(user)"   enctype="multipart/form-data" ngNativeValidate class="space-y-4">
+      <div>
+        <label  class="block text-black font-medium mb-1">First Name</label>
+        <input type="text" name="first_name" #firstname="ngModel" [(ngModel)]="user_info.first_name"  pattern="^[A-Za-z]+$" required class="w-full p-1 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none">
+        <p *ngIf="firstname.touched && !firstname.valid" class="text-red-500 text-sm font-semibold">This field is required and accepts alphabets only</p>
+        </div>
+        <div>
+        <label class="block text-black font-medium mb-1" >Last Name</label>
+        <input type="text" name="last_name" #lastname="ngModel" pattern="^[A-Za-z]+$" [(ngModel)]="user_info.last_name" required class="w-full p-1 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none">
+        <p *ngIf="lastname.touched && !lastname.valid" class="text-red-500 text-sm font-semibold">This Field is required</p>
+        </div>
+        <div>
+        <label class="block text-black font-medium mb-1">Email</label>
+        <input type="email" name="email" #useremail="ngModel" [(ngModel)]="user_info.email" email required class="w-full p-1 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none">
+        <p *ngIf="useremail.touched && !useremail.valid" class="text-red-500 text-sm font-semibold">This Field is required and must follow email format</p>
+        </div>
+        <div>
+        <label class="block text-black font-medium mb-1">Password</label>
+        <input type="password" name="password" #userpassword="ngModel" [(ngModel)]="user_info.password" required minlength="6" class="w-full p-1 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none">
+          <p *ngIf="userpassword.touched && !userpassword.valid" class="text-red-500 text-sm font-semibold">Minimum 6 character required</p>
+          </div>
+          <div>
+        <label class="block text-black font-medium mb-1">Phone Number</label>
+        <input type="text" name="phone" #userphone="ngModel" [(ngModel)]="user_info.phone" pattern="^\d{10}$" required minlength="10" maxlength="10" class="w-full p-1 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none">
+          <p *ngIf="userphone.touched && !userphone.valid" class="text-red-500 text-sm font-semibold">Allowed Exactly 10 numbers only</p>
+        </div>
+        <div>
+        <label class="block text-black font-medium mb-1">Date of Birth</label>
+        <input type="date" name="dob" #userdate="ngModel" [(ngModel)]="user_info.dob" required class="w-full p-1 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none">
+         <p *ngIf="userdate.touched && !userdate.valid" class="text-red-500 text-sm font-semibold">This Field is required</p>
+         </div>
+         <div>
+        <label class="block text-black font-medium mb-1">Profile Image</label>
+        <input type="file" name="profile_image" (change)="onFileSelected($event)"  class="w-full p-2 border rounded-xl bg-gray-50">
+        </div>
+        <input type="submit" value="save" class="w-full bg-green-600 text-white p-3 rounded-xl hover:bg-green-700 transition font-semibold">
+      
+</form>
+<p class="text-center mt-4 text-black">
+  Already have an account?
+<a [routerLink]="['/login']" class="text-blue-600 font-medium hover:underline">login</a>
+</p>
+</div>
+</div>
+</body>
+</html>

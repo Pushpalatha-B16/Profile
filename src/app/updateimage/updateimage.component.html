@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+</head>
+<body class="bg-gray-200 flex items-center justify-center min-h-screen bg-linear-to-bl from-violet-500 to-blue-500" >
+    <form #update_image="ngForm" (submit)="onSubmit(update_image)" class="bg-white/10 shadow-2xl rounded-xl p-8 w-full max-w-md space-y-5">
+       <h2 class="text-3xl font-bold text-center text-gray-800">Update Image</h2> 
+        <label class="block text-black font-medium mb-1">Profile Image</label>
+        <input type="file" name="profile_image" (change)="onFileSelected($event)" class="w-full p-2 border rounded-xl bg-gray-50">
+        <input type="submit" value="update_image" class="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition mt-4"> 
+</form>    
+</body>
+</html>
+
+    
